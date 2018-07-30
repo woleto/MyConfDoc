@@ -1,0 +1,31 @@
+1.下载git客户端
+	链接：http://git-scm.com/
+2.配置ssh
+	（1）生成公钥和密钥
+		1和2完成后在仓库文件夹里面单机右键，选择Git Bash Here，打开git bash命令窗口，输入：
+		cd ~/.ssh; ssh-keygen -t rsa
+		一路enter，生成的文件位于C:\Users\用户名\.ssh\id_rsa.pub
+		完成的截图见image文件下生成公钥.png
+	（2）改config文件
+		 打开C:\Program Files\Git\etc\ssh\ssh_config，在文件末端加一行：
+		 HostkeyAlgorithms +ssh-dss
+		 ps： C:\Program Files\Git为笔者的安装目录，根据自己的实际情况，找对应的路径
+	（3）在git中设置用户名和邮箱（要和网站上注册的一样）
+		打开git bash命令窗口，分别输入：
+		$ git config --global user.name "zhang,Ergou"  
+		$ git config --global user.email "ergou.zhang@intel.com" 
+		Ps:记得换成自己的信息
+	（4）在TeamForg中添加公钥
+		打开SecureGit网站，登陆之后点击more->Gitlogin SSH keys->把公钥内容复制进去->add token
+3. 连接远程服务器
+	$ ssh -p 29418 git-amr-1.devtools.intel.com
+	输入yes,会有欢迎界面
+	完成截图见image文件下连接成功.png
+4.设置远程仓库
+	$ git remote add origin <rul地址>
+	url地址说明：在secure git 官网，点击source code，点击想要关联的仓库名，进入新页面即可看到url，直接替换就行（请选择https格式）。
+	例如：git remote add origin https://git-amr-4.devtools.intel.com/gerrit/p/example.git
+5.从远程仓库克隆文件到本地仓库
+	在你想把代码放置的地方单机右键，选择Git Bash Here，输入如下命令
+	git clone [url]      //说明：url为仓库的地址，登录teamforge网站（https://teamforge-amr-01.devtools.intel.com/sf/sfmain/do/home），依次单击Projects->MyProjects->DS Data Factory Git->SOURCE CODE->点击进入要clone的仓库->复制url（请尽量选择https协议的url）
+	例如：git clone https://git-amr-4.devtools.intel.com/gerrit/p/example.git
