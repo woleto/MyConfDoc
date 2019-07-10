@@ -2,7 +2,7 @@ git init 初始化仓库
 git remote set-url origin https://github.com/Jasonfloy/wsb.git 修改远程仓库地址
 git remote add origin https://github.com/Jasonfloy/wsb.git 第一次添加远程仓库地址
 git remote -v    									查看remote信息
-git push origin --delete dev  						删除远程dev分支
+git push origin --delete dev 或git push origin :dev 删除远程dev分支
 git branch -d dev 									删除本地dev分支
 git branch -D dev 									强行删除本地dev分支
 git branch dev										本地创建分支
